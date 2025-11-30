@@ -14,11 +14,27 @@ export default defineConfig(({ mode }) => ({
       "mediflow-10.onrender.com",
       "*.onrender.com",
     ],
+    middlewareMode: true,
+  },
+  preview: {
+    host: "0.0.0.0",
+    port: 3000,
+    allowedHosts: [
+      "localhost",
+      "127.0.0.1",
+      "mediflow-10.onrender.com",
+      "*.onrender.com",
+    ],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: "dist",
+    sourcemap: false,
+    minify: "terser",
   },
 }));
