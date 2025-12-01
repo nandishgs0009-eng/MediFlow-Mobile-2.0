@@ -140,12 +140,12 @@ const Auth = () => {
               <form onSubmit={signupForm.handleSubmit(handleSignup)} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="fullName">Full Name</Label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <User className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="fullName"
                       placeholder="John Doe"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...signupForm.register("fullName")}
                     />
                   </div>
@@ -155,13 +155,13 @@ const Auth = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Mail className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="you@example.com"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...signupForm.register("email")}
                     />
                   </div>
@@ -171,13 +171,13 @@ const Auth = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="password">Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...signupForm.register("password")}
                     />
                   </div>
@@ -187,13 +187,13 @@ const Auth = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="confirmPassword"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...signupForm.register("confirmPassword")}
                     />
                   </div>
@@ -216,13 +216,13 @@ const Auth = () => {
               <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Mail className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="you@example.com"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...loginForm.register("email")}
                     />
                   </div>
@@ -232,13 +232,13 @@ const Auth = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="password">Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       {...loginForm.register("password")}
                     />
                   </div>

@@ -178,15 +178,15 @@ const AdminLogin = () => {
                   <Label htmlFor="email" className="text-sm font-medium">
                     Email Address
                   </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Mail className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="admin@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       required
                       disabled={loading}
                     />
@@ -198,15 +198,15 @@ const AdminLogin = () => {
                   <Label htmlFor="password" className="text-sm font-medium">
                     Password
                   </Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-foreground/70" />
+                  <div className="relative flex items-center">
+                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="pl-10"
+                      className="pl-10 pr-4"
                       required
                       disabled={loading}
                     />

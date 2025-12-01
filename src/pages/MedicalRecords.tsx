@@ -26,6 +26,8 @@ import {
   Calendar,
   File,
   AlertCircle,
+  Search,
+  Filter,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
@@ -356,20 +358,25 @@ const MedicalRecords = () => {
                     <label className="text-sm font-semibold mb-2 block">
                       Search Records
                     </label>
-                    <Input
-                      placeholder="Search by title, doctor, or description..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+                    <div className="relative flex items-center border border-input rounded-md bg-background hover:border-primary/50 transition-colors focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary">
+                      <Search className="w-5 h-5 text-foreground/70 ml-3 flex-shrink-0" />
+                      <Input
+                        placeholder="Title, doctor, description..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="border-0 bg-transparent pl-2 focus:ring-0 focus:outline-none"
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label className="text-sm font-semibold mb-2 block">
+                    <label className="text-sm font-semibold mb-2 block flex items-center gap-2">
+                      <Filter className="w-4 h-4 text-primary" />
                       Record Type
                     </label>
                     <select
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
-                      className="w-full px-3 py-2 border border-input rounded-md bg-background"
+                      className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground hover:border-primary/50 transition-colors"
                     >
                       <option value="all">All Types</option>
                       <option value="lab_report">Lab Reports</option>
@@ -380,8 +387,11 @@ const MedicalRecords = () => {
                     </select>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Found {filteredRecords.length} record{filteredRecords.length !== 1 ? "s" : ""}
+                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                    {filteredRecords.length}
+                  </span>
+                  record{filteredRecords.length !== 1 ? "s" : ""} found
                 </p>
               </CardContent>
             </Card>
