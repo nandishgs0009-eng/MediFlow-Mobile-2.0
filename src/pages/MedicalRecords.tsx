@@ -185,7 +185,7 @@ const MedicalRecords = () => {
                 <Pill className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-bold text-lg">MediFlow</span>
-            </Link
+            </Link>
           )}
           <Button
             variant="ghost"
@@ -328,21 +328,22 @@ const MedicalRecords = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Medical Records</h2>
-            <p className="text-sm text-muted-foreground">
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold truncate">Medical Records</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
               View and manage your medical documents and reports
             </p>
           </div>
-          <Button onClick={handleUpload} className="gap-2">
-            <Upload className="w-4 h-4" />
-            Upload Record
+          <Button onClick={handleUpload} className="gap-1 sm:gap-2 text-xs sm:text-sm whitespace-nowrap">
+            <Upload className="w-3 sm:w-4 h-3 sm:h-4" />
+            <span className="hidden sm:inline">Upload Record</span>
+            <span className="sm:hidden">Upload</span>
           </Button>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           <div className="space-y-6">
             {/* Filters */}
             <Card>
@@ -350,7 +351,7 @@ const MedicalRecords = () => {
                 <CardTitle>Filters</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
                   <div>
                     <label className="text-sm font-semibold mb-2 block">
                       Search Records
@@ -463,44 +464,44 @@ const MedicalRecords = () => {
             </Card>
 
             {/* Record Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-primary mb-2">
+                    <p className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">
                       {records.length}
                     </p>
-                    <p className="text-sm text-muted-foreground">Total Records</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Total Records</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-500 mb-2">
+                    <p className="text-2xl sm:text-3xl font-bold text-blue-500 mb-1 sm:mb-2">
                       {records.filter((r) => r.type === "lab_report").length}
                     </p>
-                    <p className="text-sm text-muted-foreground">Lab Reports</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Lab Reports</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-500 mb-2">
+                    <p className="text-2xl sm:text-3xl font-bold text-purple-500 mb-1 sm:mb-2">
                       {records.filter((r) => r.type === "scan").length}
                     </p>
-                    <p className="text-sm text-muted-foreground">Scans</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Scans</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-green-500 mb-2">
+                    <p className="text-2xl sm:text-3xl font-bold text-green-500 mb-1 sm:mb-2">
                       {records.filter((r) => r.type === "prescription").length}
                     </p>
-                    <p className="text-sm text-muted-foreground">Prescriptions</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Prescriptions</p>
                   </div>
                 </CardContent>
               </Card>

@@ -122,10 +122,47 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    /* Ensure body text is at least 16px on mobile for readability */
+    font-size: clamp(1rem, 2vw, 1.125rem);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    /* Fluid heading: 24px mobile → 48px desktop */
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  h2 {
+    /* 22px mobile → 36px desktop */
+    font-size: clamp(1.375rem, 4vw, 2.25rem);
+  }
+
+  h3 {
+    /* 20px mobile → 28px desktop */
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  /* Ensure touch targets are at least 44px */
+  button, a, input[type="checkbox"], input[type="radio"] {
+    @apply min-h-[2.75rem] md:min-h-[2.5rem];
+  }
+
+  /* Reduce motion on devices that prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Prevent zoom on input focus (iOS) */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
   }
 }
 

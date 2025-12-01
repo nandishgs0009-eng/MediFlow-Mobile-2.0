@@ -297,25 +297,25 @@ const AdminDashboard = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-30 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Admin Dashboard</h2>
-            <p className="text-sm text-muted-foreground">
+        <nav className="sticky top-0 z-30 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold truncate">Admin Dashboard</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
               Welcome back, {adminEmail}
             </p>
           </div>
           <Button
             variant="outline"
             onClick={handleLogout}
-            className="flex items-center gap-2"
+            className="flex items-center gap-1 sm:gap-2 shrink-0 text-xs sm:text-sm"
           >
-            <LogOut className="w-4 h-4" />
-            Logout
+            <LogOut className="w-3 sm:w-4 h-3 sm:h-4" />
+            <span className="hidden sm:inline">Logout</span>
           </Button>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -326,18 +326,18 @@ const AdminDashboard = () => {
           ) : (
             <>
               {/* Statistics Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 {statCards.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
                     <Card key={index} className={`bg-gradient-to-br ${stat.color} border ${stat.borderColor}`}>
-                      <CardContent className="p-6">
+                      <CardContent className="p-3 sm:p-4 lg:p-6">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm text-muted-foreground mb-1">{stat.title}</p>
-                            <h3 className="text-3xl font-bold">{stat.value}</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">{stat.title}</p>
+                            <h3 className="text-2xl sm:text-3xl font-bold">{stat.value}</h3>
                           </div>
-                          <Icon className="w-12 h-12 opacity-20" />
+                          <Icon className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 opacity-20" />
                         </div>
                       </CardContent>
                     </Card>
@@ -346,7 +346,7 @@ const AdminDashboard = () => {
               </div>
 
               {/* Charts Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 {/* Weekly Adherence Chart */}
                 <Card>
                   <CardHeader>
@@ -419,7 +419,7 @@ const AdminDashboard = () => {
               </div>
 
               {/* Recent Admin Logins */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 <Card>
                   <CardHeader>
                     <CardTitle>Recent Admin Logins</CardTitle>
@@ -507,20 +507,20 @@ const AdminDashboard = () => {
                   <CardDescription>Comprehensive overview of platform metrics</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="p-4 bg-secondary/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">Total Intake Logs</p>
-                      <p className="text-3xl font-bold">{stats.totalIntakeLogs}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+                    <div className="p-3 sm:p-4 bg-secondary/50 rounded-lg">
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Intake Logs</p>
+                      <p className="text-2xl sm:text-3xl font-bold">{stats.totalIntakeLogs}</p>
                       <p className="text-xs text-muted-foreground mt-2">Medication intakes recorded</p>
                     </div>
-                    <div className="p-4 bg-secondary/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">System Uptime</p>
-                      <p className="text-3xl font-bold">99.9%</p>
+                    <div className="p-3 sm:p-4 bg-secondary/50 rounded-lg">
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-1">System Uptime</p>
+                      <p className="text-2xl sm:text-3xl font-bold">99.9%</p>
                       <p className="text-xs text-muted-foreground mt-2">Last 30 days</p>
                     </div>
-                    <div className="p-4 bg-secondary/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">Average Adherence</p>
-                      <p className="text-3xl font-bold">{stats.adherenceRate}%</p>
+                    <div className="p-3 sm:p-4 bg-secondary/50 rounded-lg">
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-1">Average Adherence</p>
+                      <p className="text-2xl sm:text-3xl font-bold">{stats.adherenceRate}%</p>
                       <p className="text-xs text-muted-foreground mt-2">All users combined</p>
                     </div>
                   </div>

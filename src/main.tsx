@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import "./styles/mobile-responsive.css";
 
 // Register service worker for background alarm notifications
 if ('serviceWorker' in navigator) {

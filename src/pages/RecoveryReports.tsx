@@ -563,18 +563,18 @@ const RecoveryReports = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Recovery Reports</h2>
-            <p className="text-sm text-muted-foreground">
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold truncate">Recovery Reports</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
               Monitor your medication adherence and recovery progress
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-border bg-background text-sm"
+              className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-border bg-background text-xs sm:text-sm"
             >
               <option value="7days">Last 7 Days</option>
               <option value="14days">Last 14 Days</option>
@@ -584,7 +584,7 @@ const RecoveryReports = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -595,18 +595,18 @@ const RecoveryReports = () => {
           ) : (
             <>
               {/* Overall Adherence and Recovery Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 {/* Overall Adherence Card */}
                 <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-2">Overall Adherence Rate</p>
-                        <h3 className="text-4xl font-bold text-primary">{overallAdherence}%</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-2">Overall Adherence Rate</p>
+                        <h3 className="text-3xl sm:text-4xl font-bold text-primary">{overallAdherence}%</h3>
                       </div>
                       <div className="flex flex-col items-center justify-center">
-                        <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center">
-                          <span className="text-2xl font-bold text-primary">{overallAdherence}%</span>
+                        <div className="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 rounded-full bg-primary/20 flex items-center justify-center">
+                          <span className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">{overallAdherence}%</span>
                         </div>
                       </div>
                     </div>
@@ -616,15 +616,15 @@ const RecoveryReports = () => {
 
                 {/* Recovery Percentage Card */}
                 <Card className="bg-gradient-to-r from-green-500/5 to-emerald-500/10 border-green-500/20">
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-2">Recovery Progress</p>
-                        <h3 className="text-4xl font-bold text-green-600 dark:text-green-400">{recoveryPercentage}%</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-2">Recovery Progress</p>
+                        <h3 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">{recoveryPercentage}%</h3>
                       </div>
                       <div className="flex flex-col items-center justify-center">
-                        <div className="w-24 h-24 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <span className="text-2xl font-bold text-green-600 dark:text-green-400">{recoveryPercentage}%</span>
+                        <div className="w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 rounded-full bg-green-500/20 flex items-center justify-center">
+                          <span className="text-lg sm:text-xl lg:text-2xl font-bold text-green-600 dark:text-green-400">{recoveryPercentage}%</span>
                         </div>
                       </div>
                     </div>
@@ -634,53 +634,53 @@ const RecoveryReports = () => {
               </div>
 
               {/* Key Metrics */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Active Treatments</p>
-                        <h3 className="text-3xl font-bold">{treatmentStats.length}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Active Treatments</p>
+                        <h3 className="text-2xl sm:text-3xl font-bold">{treatmentStats.length}</h3>
                       </div>
-                      <Stethoscope className="w-12 h-12 text-primary/20" />
+                      <Stethoscope className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-primary/20" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Total Medicines</p>
-                        <h3 className="text-3xl font-bold">
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Medicines</p>
+                        <h3 className="text-2xl sm:text-3xl font-bold">
                           {treatmentStats.reduce((sum, t) => sum + t.totalMedicines, 0)}
                         </h3>
                       </div>
-                      <Pill className="w-12 h-12 text-blue-500/20" />
+                      <Pill className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-blue-500/20" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Recovery Status</p>
-                        <h3 className={`text-3xl font-bold ${getAdherenceColor(recoveryPercentage)}`}>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Recovery Status</p>
+                        <h3 className={`text-2xl sm:text-3xl font-bold ${getAdherenceColor(recoveryPercentage)}`}>
                           {recoveryPercentage >= 80 ? "Excellent" : recoveryPercentage >= 60 ? "Good" : "Needs Improvement"}
                         </h3>
                         <p className="text-xs text-muted-foreground mt-2">
                           Based on treatments & medicines
                         </p>
                       </div>
-                      <TrendingUp className="w-12 h-12 text-green-500/20" />
+                      <TrendingUp className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-green-500/20" />
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Charts Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 {/* Weekly Trend Chart */}
                 <Card>
                   <CardHeader>
@@ -746,7 +746,7 @@ const RecoveryReports = () => {
               </div>
 
               {/* Treatment Adherence */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-5 lg:mb-6">
                 {/* Treatment Adherence Bar Chart */}
                 <Card>
                   <CardHeader>

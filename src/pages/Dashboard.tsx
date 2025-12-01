@@ -786,21 +786,24 @@ const Dashboard = () => {
             <h2 className="text-2xl font-bold">Dashboard</h2>
             <p className="text-sm text-muted-foreground">Overview of your medication and health statistics</p>
           </div>
-          <div className="flex items-center gap-6">
-            {/* 12-Hour Time Display */}
-            <div className="flex flex-col items-center px-4 py-2 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-lg border border-blue-200 dark:border-blue-800 backdrop-blur-sm">
-              <div className="text-xs font-semibold text-muted-foreground mb-1">Current Time</div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-primary font-mono">
-                  {(displayTime.getHours() % 12 || 12).toString().padStart(2, '0')}:
-                  {displayTime.getMinutes().toString().padStart(2, '0')}:
-                  {displayTime.getSeconds().toString().padStart(2, '0')}
-                </div>
-                <div className="text-lg font-semibold text-primary">
-                  {displayTime.getHours() >= 12 ? 'PM' : 'AM'}
+          <div className="flex items-center gap-4 md:gap-6">
+            {/* 12-Hour Time Display - Compact with Seconds */}
+            <div className="flex items-center gap-2 px-5 py-1.5 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800 backdrop-blur-sm">
+              <div className="flex flex-col items-start">
+                <div className="text-xs font-medium text-blue-600 dark:text-blue-400">Current Time</div>
+                <div className="flex items-center gap-1">
+                  <div className="text-base md:text-xl font-bold text-blue-600 dark:text-blue-400 font-mono">
+                    {(displayTime.getHours() % 12 || 12).toString().padStart(2, '0')}:
+                    {displayTime.getMinutes().toString().padStart(2, '0')}:
+                    {displayTime.getSeconds().toString().padStart(2, '0')}
+                  </div>
+                  <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                    {displayTime.getHours() >= 12 ? 'PM' : 'AM'}
+                  </div>
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground mt-1">
+              <div className="w-px h-8 bg-blue-200 dark:bg-blue-800" />
+              <div className="text-xs font-semibold text-blue-700 dark:text-blue-300">
                 {displayTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
               </div>
             </div>
@@ -825,72 +828,72 @@ const Dashboard = () => {
           ) : (
             <>
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mb-6 sm:mb-8">
                 {/* Total Medicines */}
-                <Card className="bg-gradient-to-br from-purple-500 to-purple-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Pill className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">💊</span>
+                <Card className="bg-gradient-to-br from-purple-500 to-purple-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <Pill className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">💊</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Total Medicines</p>
-                  <p className="text-4xl font-bold">{stats.totalMedicines}</p>
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Total Medicines</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stats.totalMedicines}</p>
                 </Card>
 
                 {/* Active Treatments */}
-                <Card className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Stethoscope className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">🏥</span>
+                <Card className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <Stethoscope className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">🏥</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Active Treatments</p>
-                  <p className="text-4xl font-bold">{stats.totalTreatments}</p>
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Active Treatments</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stats.totalTreatments}</p>
                 </Card>
 
                 {/* Taken Today */}
-                <Card className="bg-gradient-to-br from-green-500 to-green-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <CheckCircle2 className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">✓</span>
+                <Card className="bg-gradient-to-br from-green-500 to-green-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <CheckCircle2 className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">✓</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Taken Today</p>
-                  <p className="text-4xl font-bold">
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Taken Today</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
                     {stats.takenToday}/{stats.totalMedicines}
                   </p>
                 </Card>
 
                 {/* Pending Tablets */}
-                <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Clock className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">⏱️</span>
+                <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <Clock className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">⏱️</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Pending</p>
-                  <p className="text-4xl font-bold">{stats.pendingToday}</p>
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Pending</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stats.pendingToday}</p>
                 </Card>
               </div>
 
               {/* Low Stock and Total Stock Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 lg:gap-4 mb-6 sm:mb-8">
                 {/* Low Stock Alert */}
-                <Card className="bg-gradient-to-br from-red-500 to-red-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <AlertCircle className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">⚠️</span>
+                <Card className="bg-gradient-to-br from-red-500 to-red-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <AlertCircle className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">⚠️</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Low Stock Items</p>
-                  <p className="text-4xl font-bold">{stats.lowStockMedicines}</p>
-                  <p className="text-xs opacity-75 mt-2">Medicines with less than 5 tablets</p>
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Low Stock Items</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stats.lowStockMedicines}</p>
+                  <p className="text-xs opacity-75 mt-1 sm:mt-2">Medicines with less than 5 tablets</p>
                 </Card>
 
                 {/* Total Stock */}
-                <Card className="bg-gradient-to-br from-indigo-500 to-indigo-600 border-0 text-white p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <TrendingUp className="w-6 h-6 opacity-80" />
-                    <span className="text-2xl">📊</span>
+                <Card className="bg-gradient-to-br from-indigo-500 to-indigo-600 border-0 text-white p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
+                    <TrendingUp className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 opacity-80" />
+                    <span className="text-lg sm:text-xl lg:text-2xl">📊</span>
                   </div>
-                  <p className="text-sm opacity-90 mb-2">Total Stock</p>
-                  <p className="text-4xl font-bold">{stats.totalStock}</p>
-                  <p className="text-xs opacity-75 mt-2">tablets available</p>
+                  <p className="text-xs sm:text-sm opacity-90 mb-1 sm:mb-2">Total Stock</p>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stats.totalStock}</p>
+                  <p className="text-xs opacity-75 mt-1 sm:mt-2">tablets available</p>
                 </Card>
               </div>
 

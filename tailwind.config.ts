@@ -5,16 +5,54 @@ export default {
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
+    // Mobile-first responsive screens
+    screens: {
+      'xs': '320px',      // Mobile Portrait (iPhone SE, 12 mini)
+      'sm': '480px',      // Mobile Landscape (iPhone XR)
+      'md': '768px',      // iPad, Tablet
+      'lg': '1024px',     // iPad Pro, Desktop
+      'xl': '1280px',     // Desktop
+      '2xl': '1536px',    // Wide Desktop
+    },
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        'xs': '1rem',     // 16px
+        'sm': '1.5rem',   // 24px
+        'md': '2rem',     // 32px
+        'lg': '3rem',     // 48px
+      },
       screens: {
-        "2xl": "1400px",
+        '2xl': '1400px',
       },
     },
     extend: {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        // Fluid typography: scales with device
+        'xs': ['0.75rem', { lineHeight: '1rem' }],       // 12px
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],   // 14px
+        'base': ['1rem', { lineHeight: '1.5rem' }],      // 16px (minimum for readability)
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],   // 18px
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],    // 20px
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],       // 24px
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],  // 30px
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],    // 36px
+        '5xl': ['3rem', { lineHeight: '1' }],            // 48px
+        '6xl': ['3.75rem', { lineHeight: '1' }],         // 60px
+        '7xl': ['4.5rem', { lineHeight: '1' }],          // 72px
+      },
+      spacing: {
+        // Use 4px base unit for all spacing
+        'xs': '0.25rem',    // 4px
+        'sm': '0.5rem',     // 8px
+        'md': '1rem',       // 16px
+        'lg': '1.5rem',     // 24px
+        'xl': '2rem',       // 32px
+        '2xl': '2.5rem',    // 40px
+        '3xl': '3rem',      // 48px
       },
       colors: {
         border: "hsl(var(--border))",

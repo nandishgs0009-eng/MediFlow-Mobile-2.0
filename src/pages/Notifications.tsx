@@ -314,10 +314,10 @@ const Notifications = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Notifications</h2>
-            <p className="text-sm text-muted-foreground">
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold truncate">Notifications</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
               Manage your notifications and preferences
             </p>
           </div>
@@ -329,8 +329,8 @@ const Notifications = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-8">
-          <div className="space-y-6">
+        <div className="p-4 sm:p-6 md:p-8">
+          <div className="space-y-4 sm:space-y-5 lg:space-y-6">
             {/* Notification Preferences */}
             <Card>
               <CardHeader>

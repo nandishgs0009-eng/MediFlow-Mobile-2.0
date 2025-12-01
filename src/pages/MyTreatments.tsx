@@ -792,32 +792,36 @@ const MyTreatments = () => {
             <h2 className="text-2xl font-bold">My Treatments</h2>
             <p className="text-sm text-muted-foreground">Manage your active treatments and associated medicines</p>
           </div>
-          <div className="flex items-center gap-6">
-            {/* 12-Hour Time Display */}
-            <div className="flex flex-col items-center px-4 py-2 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-lg border border-blue-200 dark:border-blue-800 backdrop-blur-sm">
-              <div className="text-xs font-semibold text-muted-foreground mb-1">Current Time</div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-primary font-mono">
-                  {(displayTime.getHours() % 12 || 12).toString().padStart(2, '0')}:
-                  {displayTime.getMinutes().toString().padStart(2, '0')}:
-                  {displayTime.getSeconds().toString().padStart(2, '0')}
-                </div>
-                <div className="text-lg font-semibold text-primary">
-                  {displayTime.getHours() >= 12 ? 'PM' : 'AM'}
+          <div className="flex items-center gap-4 md:gap-6">
+            {/* 12-Hour Time Display - Compact with Seconds */}
+            <div className="flex items-center gap-2 px-4 sm:px-5 py-1.5 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800 backdrop-blur-sm">
+              <div className="flex flex-col items-start">
+                <div className="text-xs font-medium text-blue-600 dark:text-blue-400">Current Time</div>
+                <div className="flex items-center gap-1">
+                  <div className="text-sm sm:text-base md:text-lg font-bold text-blue-600 dark:text-blue-400 font-mono">
+                    {(displayTime.getHours() % 12 || 12).toString().padStart(2, '0')}:
+                    {displayTime.getMinutes().toString().padStart(2, '0')}:
+                    {displayTime.getSeconds().toString().padStart(2, '0')}
+                  </div>
+                  <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                    {displayTime.getHours() >= 12 ? 'PM' : 'AM'}
+                  </div>
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground mt-1">
+              <div className="w-px h-6 sm:h-8 bg-blue-200 dark:bg-blue-800" />
+              <div className="text-xs font-semibold text-blue-700 dark:text-blue-300">
                 {displayTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
               </div>
             </div>
 
             {/* Add Treatment Button */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
             <Dialog open={addTreatmentOpen} onOpenChange={setAddTreatmentOpen}>
               <DialogTrigger asChild>
-                <Button className="gap-2">
-                  <Plus className="w-5 h-5" />
-                  Add Treatment
+                <Button className="gap-2 text-xs sm:text-sm">
+                  <Plus className="w-4 sm:w-5 h-4 sm:h-5" />
+                  <span className="hidden sm:inline">Add Treatment</span>
+                  <span className="sm:hidden">Add</span>
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-md">
@@ -919,30 +923,30 @@ const MyTreatments = () => {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 {treatments.map((treatment) => (
                   <Card key={treatment.id} className="overflow-hidden">
-                    <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <CardTitle className="text-2xl">{treatment.name}</CardTitle>
+                    <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10 p-3 sm:p-4 lg:p-6">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2 flex-wrap">
+                            <CardTitle className="text-lg sm:text-xl lg:text-2xl break-words">{treatment.name}</CardTitle>
                             <Badge
-                              className={
+                              className={`text-xs sm:text-sm whitespace-nowrap ${
                                 treatment.status === "active"
                                   ? "bg-green-500 text-white"
                                   : "bg-gray-500 text-white"
-                              }
+                              }`}
                             >
                               {treatment.status.charAt(0).toUpperCase() +
                                 treatment.status.slice(1)}
                             </Badge>
                           </div>
-                          <CardDescription className="text-base">
+                          <CardDescription className="text-xs sm:text-sm lg:text-base line-clamp-2">
                             {treatment.description || "No description provided"}
                           </CardDescription>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-1 sm:gap-2 flex-shrink-0">
                           <Button
                             variant="ghost"
                             size="icon"
@@ -954,70 +958,70 @@ const MyTreatments = () => {
                       </div>
                     </CardHeader>
 
-                    <CardContent className="pt-6">
+                    <CardContent className="pt-4 sm:pt-6 p-3 sm:p-4 lg:p-6">
                       {/* Treatment Info */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
                         <div>
-                          <p className="text-sm text-muted-foreground mb-1">Start Date</p>
-                          <p className="font-semibold">
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-1">Start Date</p>
+                          <p className="font-semibold text-sm sm:text-base">
                             {new Date(treatment.start_date).toLocaleDateString()}
                           </p>
                         </div>
                         {treatment.end_date && (
                           <div>
-                            <p className="text-sm text-muted-foreground mb-1">End Date</p>
-                            <p className="font-semibold">
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-1">End Date</p>
+                            <p className="font-semibold text-sm sm:text-base">
                               {new Date(treatment.end_date).toLocaleDateString()}
                             </p>
                           </div>
                         )}
                         <div>
-                          <p className="text-sm text-muted-foreground mb-1">Duration</p>
-                          <p className="font-semibold">
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-1">Duration</p>
+                          <p className="font-semibold text-sm sm:text-base">
                             {treatment.status === "active" ? "Ongoing" : "Completed"}
                           </p>
                         </div>
                       </div>
 
                       {/* Medicines */}
-                      <div className="mt-6 border-t pt-6">
-                        <h4 className="font-semibold mb-4 flex items-center gap-2">
-                          <Pill className="w-5 h-5 text-primary" />
+                      <div className="mt-4 sm:mt-6 border-t pt-4 sm:pt-6">
+                        <h4 className="font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                          <Pill className="w-4 sm:w-5 h-4 sm:h-5 text-primary" />
                           Associated Medicines ({treatment.medicines.length})
                         </h4>
                         {treatment.medicines.length > 0 ? (
                           <>
-                            <div className="space-y-3">
+                            <div className="space-y-2 sm:space-y-3">
                               {treatment.medicines.map((medicine) => (
                                 <div
                                   key={medicine.id}
-                                  className="p-4 rounded-lg border border-border/50 bg-secondary/20 hover:bg-secondary/40 transition-colors"
+                                  className="p-2 sm:p-3 lg:p-4 rounded-lg border border-border/50 bg-secondary/20 hover:bg-secondary/40 transition-colors"
                                 >
-                                  <div className="flex items-start justify-between mb-2">
-                                    <div>
-                                      <p className="font-semibold flex items-center gap-2">
+                                  <div className="flex items-start justify-between mb-1 sm:mb-2 gap-2">
+                                    <div className="flex-1 min-w-0">
+                                      <p className="font-semibold flex items-center gap-2 text-sm sm:text-base mb-0.5 sm:mb-1">
                                         {medicine.name}
                                         {medicationTaken[medicine.id] && (
-                                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                                          <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-green-600 flex-shrink-0" />
                                         )}
                                       </p>
-                                      <p className="text-sm text-muted-foreground">
+                                      <p className="text-xs sm:text-sm text-muted-foreground">
                                         {medicine.dosage}
                                       </p>
                                     </div>
-                                    <Badge variant="outline">{medicine.frequency}</Badge>
+                                    <Badge variant="outline" className="text-xs sm:text-sm whitespace-nowrap">{medicine.frequency}</Badge>
                                   </div>
-                                  <p className="text-sm text-muted-foreground flex items-center gap-1 mb-2">
-                                    <Clock className="w-4 h-4" />
+                                  <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1 mb-1 sm:mb-2">
+                                    <Clock className="w-3 sm:w-4 h-3 sm:h-4" />
                                     {medicine.schedule_time}
                                   </p>
                                   {medicine.instructions && (
-                                    <p className="text-xs text-muted-foreground italic mb-2">
+                                    <p className="text-xs text-muted-foreground italic mb-1 sm:mb-2">
                                       {medicine.instructions}
                                     </p>
                                   )}
                                   {medicine.stock !== null && (
-                                    <p className="text-sm mb-3">
+                                    <p className="text-xs sm:text-sm mb-2 sm:mb-3">
                                       Stock:{" "}
                                       <span
                                         className={
@@ -1114,10 +1118,10 @@ const MyTreatments = () => {
                               <DialogTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className="mt-4 w-full gap-2"
+                                  className="mt-3 sm:mt-4 w-full gap-2 text-xs sm:text-sm"
                                   onClick={() => setSelectedTreatmentId(treatment.id)}
                                 >
-                                  <Plus className="w-4 h-4" />
+                                  <Plus className="w-3 sm:w-4 h-3 sm:h-4" />
                                   Add Medicine to This Treatment
                                 </Button>
                               </DialogTrigger>
@@ -1278,17 +1282,18 @@ const MyTreatments = () => {
                             </Dialog>
                           </>
                         ) : (
-                          <div className="text-center py-6">
-                            <p className="text-muted-foreground mb-3">
+                          <div className="text-center py-4 sm:py-6">
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
                               No medicines added yet
                             </p>
                             <Dialog open={addMedicineOpen} onOpenChange={setAddMedicineOpen}>
                               <DialogTrigger asChild>
                                 <Button
                                   size="sm"
+                                  className="text-xs sm:text-sm"
                                   onClick={() => setSelectedTreatmentId(treatment.id)}
                                 >
-                                  <Plus className="w-4 h-4 mr-2" />
+                                  <Plus className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
                                   Add First Medicine
                                 </Button>
                               </DialogTrigger>

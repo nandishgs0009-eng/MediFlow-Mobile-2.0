@@ -184,29 +184,29 @@ const AdminPatients = () => {
       {/* Main Content */}
       <div className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}>
         {/* Top Navigation */}
-        <nav className="bg-card border-b border-border/50 px-8 py-4 sticky top-0 z-30 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Patients Management</h1>
-            <p className="text-sm text-muted-foreground">Manage and view patient information</p>
+        <nav className="bg-card border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 sticky top-0 z-30 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-2xl font-bold truncate">Patients Management</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">Manage and view patient information</p>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            <span className="text-xs sm:text-sm text-muted-foreground hidden sm:inline">
               Admin: <span className="font-medium">{adminEmail}</span>
             </span>
             <Button
               variant="outline"
               size="sm"
-              className="text-destructive"
+              className="text-destructive text-xs sm:text-sm"
               onClick={handleLogout}
             >
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
+              <LogOut className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Logout</span>
             </Button>
           </div>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -233,7 +233,7 @@ const AdminPatients = () => {
               </div>
 
               {/* Patients Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-7 lg:mb-8">
                 {filteredPatients.length > 0 ? (
                   filteredPatients.map((patient) => (
                     <Card
@@ -305,44 +305,44 @@ const AdminPatients = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
                       {/* Full Name */}
                       <div>
-                        <label className="text-sm font-medium text-muted-foreground">
+                        <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                           Full Name
                         </label>
-                        <p className="text-lg font-semibold mt-1">
+                        <p className="text-base sm:text-lg font-semibold mt-1">
                           {selectedPatient.full_name || "N/A"}
                         </p>
                       </div>
 
                       {/* Email */}
                       <div>
-                        <label className="text-sm font-medium text-muted-foreground">
+                        <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                           Email Address
                         </label>
-                        <p className="text-lg font-semibold mt-1 truncate">
+                        <p className="text-base sm:text-lg font-semibold mt-1 truncate">
                           {selectedPatient.email || "N/A"}
                         </p>
                       </div>
 
                       {/* Phone */}
                       <div>
-                        <label className="text-sm font-medium text-muted-foreground">
+                        <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                           Phone Number
                         </label>
-                        <p className="text-lg font-semibold mt-1">
+                        <p className="text-base sm:text-lg font-semibold mt-1">
                           {selectedPatient.phone || "N/A"}
                         </p>
                       </div>
 
                       {/* Date of Birth */}
                       <div>
-                        <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
+                        <label className="text-xs sm:text-sm font-medium text-muted-foreground flex items-center gap-2">
+                          <Calendar className="w-3 sm:w-4 h-3 sm:h-4" />
                           Date of Birth
                         </label>
-                        <p className="text-lg font-semibold mt-1">
+                        <p className="text-base sm:text-lg font-semibold mt-1">
                           {selectedPatient.date_of_birth
                             ? new Date(selectedPatient.date_of_birth).toLocaleDateString()
                             : "N/A"}
@@ -351,11 +351,11 @@ const AdminPatients = () => {
 
                       {/* Medical Condition */}
                       <div>
-                        <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                          <AlertCircle className="w-4 h-4" />
+                        <label className="text-xs sm:text-sm font-medium text-muted-foreground flex items-center gap-2">
+                          <AlertCircle className="w-3 sm:w-4 h-3 sm:h-4" />
                           Medical Condition
                         </label>
-                        <p className="text-lg font-semibold mt-1">
+                        <p className="text-base sm:text-lg font-semibold mt-1">
                           {selectedPatient.medical_condition || "N/A"}
                         </p>
                       </div>

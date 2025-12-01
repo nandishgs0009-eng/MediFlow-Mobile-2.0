@@ -403,17 +403,17 @@ const HealthSummary = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold">Health Summary</h2>
-            <p className="text-sm text-muted-foreground">
+            <h2 className="text-xl sm:text-2xl font-bold">Health Summary</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Your overall health and medication adherence report
             </p>
           </div>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <p className="text-muted-foreground">Loading health summary...</p>
@@ -443,74 +443,74 @@ const HealthSummary = () => {
               </Card>
 
               {/* Key Statistics */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">
                           Total Treatments
                         </p>
-                        <p className="text-3xl font-bold">
+                        <p className="text-2xl sm:text-3xl font-bold">
                           {summaryStats.totalTreatments}
                         </p>
                       </div>
-                      <Stethoscope className="w-12 h-12 text-primary/20" />
+                      <Stethoscope className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-primary/20" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">
                           Total Medicines
                         </p>
-                        <p className="text-3xl font-bold">
+                        <p className="text-2xl sm:text-3xl font-bold">
                           {summaryStats.totalMedicines}
                         </p>
                       </div>
-                      <Pill className="w-12 h-12 text-blue-500/20" />
+                      <Pill className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-blue-500/20" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">
                           Adherence Rate
                         </p>
-                        <p className="text-3xl font-bold">
+                        <p className="text-2xl sm:text-3xl font-bold">
                           {summaryStats.overallAdherence}%
                         </p>
                       </div>
-                      <TrendingUp className="w-12 h-12 text-green-500/20" />
+                      <TrendingUp className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-green-500/20" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card>
-                  <CardContent className="p-6">
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">
                           Recovery Score
                         </p>
-                        <p className="text-3xl font-bold">
+                        <p className="text-2xl sm:text-3xl font-bold">
                           {summaryStats.recoveryScore}%
                         </p>
                       </div>
-                      <Activity className="w-12 h-12 text-orange-500/20" />
+                      <Activity className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 text-orange-500/20" />
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Charts */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                 {/* 14-Day Adherence Trend */}
                 <Card>
                   <CardHeader>
@@ -600,7 +600,7 @@ const HealthSummary = () => {
                           </PieChart>
                         </ResponsiveContainer>
                         {/* Legend */}
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                           {adherenceDistribution.map((item, index) => (
                             <div key={item.name} className="flex items-center gap-2">
                               <div

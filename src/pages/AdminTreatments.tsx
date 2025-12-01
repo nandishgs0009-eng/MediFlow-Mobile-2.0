@@ -267,29 +267,29 @@ const AdminTreatments = () => {
       {/* Main Content */}
       <div className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}>
         {/* Top Navigation */}
-        <nav className="bg-card border-b border-border/50 px-8 py-4 sticky top-0 z-30 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Treatments Management</h1>
-            <p className="text-sm text-muted-foreground">Manage patient treatments and medicines</p>
+        <nav className="bg-card border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 sticky top-0 z-30 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-2xl font-bold truncate">Treatments Management</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">Manage patient treatments and medicines</p>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            <span className="text-xs sm:text-sm text-muted-foreground hidden sm:inline">
               Admin: <span className="font-medium">{adminEmail}</span>
             </span>
             <Button
               variant="outline"
               size="sm"
-              className="text-destructive"
+              className="text-destructive text-xs sm:text-sm"
               onClick={handleLogout}
             >
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
+              <LogOut className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Logout</span>
             </Button>
           </div>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -316,7 +316,7 @@ const AdminTreatments = () => {
               </div>
 
               {/* Patients Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-7 lg:mb-8">
                 {filteredPatients.length > 0 ? (
                   filteredPatients.map((patient) => (
                     <Card
@@ -383,28 +383,28 @@ const AdminTreatments = () => {
                       <CardTitle>Selected Patient</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
                         <div>
-                          <label className="text-sm font-medium text-muted-foreground">
+                          <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                             Full Name
                           </label>
-                          <p className="text-lg font-semibold mt-1">
+                          <p className="text-base sm:text-lg font-semibold mt-1">
                             {selectedPatient.full_name}
                           </p>
                         </div>
                         <div>
-                          <label className="text-sm font-medium text-muted-foreground">
+                          <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                             Email
                           </label>
-                          <p className="text-sm font-semibold mt-1 truncate">
+                          <p className="text-xs sm:text-sm font-semibold mt-1 truncate">
                             {selectedPatient.email}
                           </p>
                         </div>
                         <div>
-                          <label className="text-sm font-medium text-muted-foreground">
+                          <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                             Medical Condition
                           </label>
-                          <p className="text-lg font-semibold mt-1">
+                          <p className="text-base sm:text-lg font-semibold mt-1">
                             {selectedPatient.medical_condition || "N/A"}
                           </p>
                         </div>
@@ -466,17 +466,17 @@ const AdminTreatments = () => {
                             {expandedTreatment === treatment.id && (
                               <CardContent className="border-t pt-4 space-y-4">
                                 {/* Treatment Dates */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
                                   <div>
-                                    <label className="text-sm font-medium text-muted-foreground">
+                                    <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                                       Start Date
                                     </label>
-                                    <p className="text-lg font-semibold mt-1">
+                                    <p className="text-base sm:text-lg font-semibold mt-1">
                                       {new Date(treatment.start_date).toLocaleDateString()}
                                     </p>
                                   </div>
                                   <div>
-                                    <label className="text-sm font-medium text-muted-foreground">
+                                    <label className="text-xs sm:text-sm font-medium text-muted-foreground">
                                       End Date
                                     </label>
                                     <p className="text-lg font-semibold mt-1">
@@ -501,13 +501,13 @@ const AdminTreatments = () => {
                                           key={medicine.id}
                                           className="bg-secondary/50 border-0"
                                         >
-                                          <CardContent className="p-4">
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                          <CardContent className="p-2 sm:p-3 lg:p-4">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
                                               <div>
                                                 <label className="text-xs font-medium text-muted-foreground">
                                                   Medicine Name
                                                 </label>
-                                                <p className="font-semibold mt-1">
+                                                <p className="text-sm sm:text-base font-semibold mt-1">
                                                   {medicine.name}
                                                 </p>
                                               </div>
@@ -515,7 +515,7 @@ const AdminTreatments = () => {
                                                 <label className="text-xs font-medium text-muted-foreground">
                                                   Dosage
                                                 </label>
-                                                <p className="font-semibold mt-1">
+                                                <p className="text-sm sm:text-base font-semibold mt-1">
                                                   {medicine.dosage}
                                                 </p>
                                               </div>
@@ -545,8 +545,8 @@ const AdminTreatments = () => {
                       </div>
                     ) : (
                       <Card>
-                        <CardContent className="p-8 text-center">
-                          <AlertCircle className="w-12 h-12 mx-auto text-muted-foreground mb-4 opacity-50" />
+                        <CardContent className="p-4 sm:p-6 md:p-8 text-center">
+                          <AlertCircle className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 mx-auto text-muted-foreground mb-4 opacity-50" />
                           <p className="text-muted-foreground">
                             No treatments found for this patient
                           </p>

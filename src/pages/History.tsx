@@ -372,24 +372,24 @@ const History = () => {
         className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4 flex-1">
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
             {treatmentId && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/treatments")}
-                className="gap-2"
+                className="gap-1 sm:gap-2 text-xs sm:text-sm"
               >
-                <ChevronLeft className="w-4 h-4" />
-                Back
+                <ChevronLeft className="w-3 sm:w-4 h-3 sm:h-4" />
+                <span className="hidden sm:inline">Back</span>
               </Button>
             )}
-            <div>
-              <h2 className="text-2xl font-bold">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-2xl font-bold truncate">
                 {selectedTreatment ? `${selectedTreatment.name} - History` : "Medication History"}
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
                 {selectedTreatment
                   ? `View medication history for ${selectedTreatment.name}`
                   : "View your medication intake history"}
@@ -399,7 +399,7 @@ const History = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -437,7 +437,7 @@ const History = () => {
                   <CardTitle className="text-lg">Filters</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
                     <div>
                       <label className="text-sm font-semibold mb-2 block">Date</label>
                       <Input

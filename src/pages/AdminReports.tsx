@@ -452,27 +452,27 @@ const AdminReports = () => {
       {/* Main Content */}
       <div className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}>
         {/* Top Navigation */}
-        <nav className="bg-card border-b border-border/50 px-8 py-4 sticky top-0 z-30 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Reports</h1>
-            <p className="text-sm text-muted-foreground">Patient reports and analytics</p>
+        <nav className="bg-card border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 sticky top-0 z-30 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-2xl font-bold truncate">Reports</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">Patient reports and analytics</p>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            <span className="text-xs sm:text-sm text-muted-foreground hidden sm:inline">
               Admin: <span className="font-medium">{adminEmail}</span>
             </span>
             <button
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border/50 hover:bg-accent transition-colors text-sm font-medium text-destructive"
+              className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-border/50 hover:bg-accent transition-colors text-xs sm:text-sm font-medium text-destructive"
               onClick={handleLogout}
             >
-              <LogOut className="w-4 h-4" />
-              Logout
+              <LogOut className="w-3 sm:w-4 h-3 sm:h-4" />
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -481,7 +481,7 @@ const AdminReports = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-8">
               {/* Left: Patient List */}
               <div className="lg:col-span-1">
                 <Card className="h-full flex flex-col">
@@ -549,18 +549,18 @@ const AdminReports = () => {
                         <CardDescription>{selectedReport.medical_condition}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
                           <div>
                             <p className="text-xs text-muted-foreground">Email</p>
-                            <p className="font-medium">{selectedReport.email}</p>
+                            <p className="text-sm sm:text-base font-medium">{selectedReport.email}</p>
                           </div>
                           <div>
                             <p className="text-xs text-muted-foreground">Phone</p>
-                            <p className="font-medium">{selectedReport.phone}</p>
+                            <p className="text-sm sm:text-base font-medium">{selectedReport.phone}</p>
                           </div>
                           <div>
                             <p className="text-xs text-muted-foreground">DOB</p>
-                            <p className="font-medium">
+                            <p className="text-sm sm:text-base font-medium">
                               {new Date(selectedReport.date_of_birth).toLocaleDateString()}
                             </p>
                           </div>
@@ -573,11 +573,11 @@ const AdminReports = () => {
                     </Card>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
                       <Card>
-                        <CardContent className="pt-6">
+                        <CardContent className="pt-4 sm:pt-6">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-primary">
+                            <div className="text-xl sm:text-2xl font-bold text-primary">
                               {selectedReport.adherenceRate}%
                             </div>
                             <p className="text-xs text-muted-foreground mt-2">Adherence Rate</p>
@@ -585,9 +585,9 @@ const AdminReports = () => {
                         </CardContent>
                       </Card>
                       <Card>
-                        <CardContent className="pt-6">
+                        <CardContent className="pt-4 sm:pt-6">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-green-600">
+                            <div className="text-xl sm:text-2xl font-bold text-green-600">
                               {selectedReport.activeTreatments}
                             </div>
                             <p className="text-xs text-muted-foreground mt-2">Active Treatments</p>
@@ -595,9 +595,9 @@ const AdminReports = () => {
                         </CardContent>
                       </Card>
                       <Card>
-                        <CardContent className="pt-6">
+                        <CardContent className="pt-4 sm:pt-6">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-blue-600">
+                            <div className="text-xl sm:text-2xl font-bold text-blue-600">
                               {selectedReport.totalMedicines}
                             </div>
                             <p className="text-xs text-muted-foreground mt-2">Medicines</p>
