@@ -302,7 +302,7 @@ const AdminTreatments = () => {
               {/* Search Bar */}
               <div className="mb-6">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-foreground/70" />
                   <Input
                     placeholder="Search patients by name, email, or phone..."
                     value={searchTerm}
