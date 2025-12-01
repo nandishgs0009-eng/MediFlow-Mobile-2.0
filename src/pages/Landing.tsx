@@ -22,7 +22,7 @@ const Landing = () => {
   const features = [
     {
       icon: Pill,
-      title: "Medication Tracking",
+      title: "MediFlow (Medication Tracking)",
       description: "Never miss a dose with intelligent scheduling and reminders for all your medications."
     },
     {
@@ -291,7 +291,7 @@ const Landing = () => {
               <span className="font-semibold">MedTracker</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2024 MedTracker. All rights reserved.
+              © 2025 MediFlow. All rights reserved.
             </p>
           </div>
         </div>
