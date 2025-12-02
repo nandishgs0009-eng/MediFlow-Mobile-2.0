@@ -35,6 +35,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface PatientProfile {
   id: string;
@@ -63,8 +64,9 @@ const Profile = () => {
   const { user, signOut, profile } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -284,7 +286,7 @@ const Profile = () => {
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen`}
+        } bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen hidden md:flex z-50`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-border/50 flex items-center justify-between">
@@ -422,7 +424,7 @@ const Profile = () => {
 
       {/* Main Content */}
       <main
-        className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
+        className={`flex-1 w-full md:${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
         <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">

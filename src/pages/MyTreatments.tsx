@@ -44,6 +44,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Medicine {
   id: string;
@@ -71,7 +72,8 @@ const MyTreatments = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const isMobile = useIsMobile();
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [treatments, setTreatments] = useState<Treatment[]>([]);
   const [loading, setLoading] = useState(true);
   const [addTreatmentOpen, setAddTreatmentOpen] = useState(false);
@@ -675,7 +677,7 @@ const MyTreatments = () => {
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen hidden md:flex z-50`}>
         {/* Logo */}
         <div className="p-6 border-b border-border/50 flex items-center justify-between">
           {sidebarOpen && (
