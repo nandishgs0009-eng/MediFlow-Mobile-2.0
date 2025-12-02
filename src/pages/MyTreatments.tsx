@@ -677,7 +677,7 @@ const MyTreatments = () => {
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen hidden md:flex z-50`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed md:static left-0 top-0 h-screen z-50`}>
         {/* Logo */}
         <div className="p-6 border-b border-border/50 flex items-center justify-between">
           {sidebarOpen && (
@@ -787,7 +787,7 @@ const MyTreatments = () => {
       </aside>
 
       {/* Main Content */}
-      <main className={`flex-1 ${sidebarOpen ? 'ml-64' : 'ml-20'} transition-all duration-300`}>
+      <main className={`flex-1 transition-all duration-300 ${!isMobile && (sidebarOpen ? 'md:ml-64' : 'md:ml-20')}`}>
         {/* Top Bar */}
         <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
           <div>
