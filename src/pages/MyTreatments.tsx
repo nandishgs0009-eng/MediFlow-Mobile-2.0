@@ -1424,16 +1424,16 @@ const MyTreatments = () => {
                           Start New Treatment
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="w-[calc(100%-1rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-5 lg:p-6">
-                        <DialogHeader className="pb-3 sm:pb-4 lg:pb-5">
-                          <DialogTitle className="text-base sm:text-lg lg:text-xl">Add New Treatment</DialogTitle>
+                      <DialogContent className="w-[calc(100%-1rem)] max-w-sm sm:max-w-md max-h-[95vh] overflow-y-auto p-5 sm:p-6">
+                        <DialogHeader className="pb-4 sm:pb-5">
+                          <DialogTitle className="text-lg sm:text-xl">Add New Treatment</DialogTitle>
                           <DialogDescription className="text-xs sm:text-sm">
                             Create a new treatment plan
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                        <div className="space-y-4 sm:space-y-5">
                           <div>
-                            <Label htmlFor="name" className="text-xs sm:text-sm">Treatment Name *</Label>
+                            <Label htmlFor="name" className="text-xs sm:text-sm block mb-2">Treatment Name *</Label>
                             <Input
                               id="name"
                               placeholder="e.g., Diabetes"
@@ -1441,11 +1441,11 @@ const MyTreatments = () => {
                               onChange={(e) =>
                                 setTreatmentForm({ ...treatmentForm, name: e.target.value })
                               }
-                              className="h-10 sm:h-11 text-xs sm:text-sm"
+                              className="h-11 sm:h-12 text-sm sm:text-base"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="description" className="text-xs sm:text-sm">Description</Label>
+                            <Label htmlFor="description" className="text-xs sm:text-sm block mb-2">Description</Label>
                             <Textarea
                               id="description"
                               placeholder="Treatment details"
@@ -1453,12 +1453,12 @@ const MyTreatments = () => {
                               onChange={(e) =>
                                 setTreatmentForm({ ...treatmentForm, description: e.target.value })
                               }
-                              className="h-20 sm:h-24 text-xs sm:text-sm resize-none"
+                              className="h-24 sm:h-28 text-sm sm:text-base resize-none"
                             />
                           </div>
-                          <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                          <div className="grid grid-cols-2 gap-3 sm:gap-4">
                             <div>
-                              <Label htmlFor="start_date" className="text-xs sm:text-sm">Start Date</Label>
+                              <Label htmlFor="start_date" className="text-xs sm:text-sm block mb-2">Start Date</Label>
                               <Input
                                 id="start_date"
                                 type="date"
@@ -1466,11 +1466,11 @@ const MyTreatments = () => {
                                 onChange={(e) =>
                                   setTreatmentForm({ ...treatmentForm, start_date: e.target.value })
                                 }
-                                className="h-10 sm:h-11 text-xs sm:text-sm"
+                                className="h-11 sm:h-12 text-sm sm:text-base"
                               />
                             </div>
                             <div>
-                              <Label htmlFor="end_date" className="text-xs sm:text-sm">End Date</Label>
+                              <Label htmlFor="end_date" className="text-xs sm:text-sm block mb-2">End Date</Label>
                               <Input
                                 id="end_date"
                                 type="date"
@@ -1478,12 +1478,12 @@ const MyTreatments = () => {
                                 onChange={(e) =>
                                   setTreatmentForm({ ...treatmentForm, end_date: e.target.value })
                                 }
-                                className="h-10 sm:h-11 text-xs sm:text-sm"
+                                className="h-11 sm:h-12 text-sm sm:text-base"
                               />
                             </div>
                           </div>
                           <div>
-                            <Label htmlFor="status" className="text-xs sm:text-sm">Status</Label>
+                            <Label htmlFor="status" className="text-xs sm:text-sm block mb-2">Status</Label>
                             <Select
                               value={treatmentForm.status}
                               onValueChange={(value: string) =>
@@ -1493,7 +1493,7 @@ const MyTreatments = () => {
                                 })
                               }
                             >
-                              <SelectTrigger id="status" className="h-10 sm:h-11 text-xs sm:text-sm">
+                              <SelectTrigger id="status" className="h-11 sm:h-12 text-sm sm:text-base">
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
@@ -1502,7 +1502,7 @@ const MyTreatments = () => {
                               </SelectContent>
                             </Select>
                           </div>
-                          <Button onClick={handleAddTreatment} className="w-full h-10 sm:h-11 text-xs sm:text-sm mt-3 sm:mt-4">
+                          <Button onClick={handleAddTreatment} className="w-full h-11 sm:h-12 text-sm sm:text-base font-medium mt-4 sm:mt-5">
                             Add Treatment
                           </Button>
                         </div>
