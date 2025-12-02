@@ -836,14 +836,14 @@ const MyTreatments = () => {
                   <span className="sm:hidden">Add</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[calc(100%-1rem)] max-w-sm sm:max-w-md max-h-[80vh] overflow-y-auto p-2.5 sm:p-4">
-                <DialogHeader>
+              <DialogContent className="w-[calc(100%-1rem)] max-w-sm sm:max-w-md max-h-[85vh] overflow-y-auto p-4 sm:p-6">
+                <DialogHeader className="pb-2 sm:pb-4">
                   <DialogTitle className="text-base sm:text-lg">Add New Treatment</DialogTitle>
                   <DialogDescription className="text-xs sm:text-sm">
                     Create a new treatment plan
                   </DialogDescription>
                 </DialogHeader>
-                <div className="space-y-2 sm:space-y-3">
+                <div className="space-y-3 sm:space-y-4">
                   <div>
                     <Label htmlFor="name">Treatment Name *</Label>
                     <Input
@@ -853,7 +853,7 @@ const MyTreatments = () => {
                       onChange={(e) =>
                         setTreatmentForm({ ...treatmentForm, name: e.target.value })
                       }
-                      className="h-8 sm:h-10 text-xs sm:text-sm"
+                      className="h-9 sm:h-10 text-xs sm:text-sm"
                     />
                   </div>
                   <div>
@@ -868,7 +868,7 @@ const MyTreatments = () => {
                       className="h-16 sm:h-20 text-xs sm:text-sm resize-none"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <div>
                       <Label htmlFor="start_date">Start Date</Label>
                       <Input
@@ -878,7 +878,7 @@ const MyTreatments = () => {
                         onChange={(e) =>
                           setTreatmentForm({ ...treatmentForm, start_date: e.target.value })
                         }
-                        className="h-8 sm:h-10 text-xs sm:text-sm"
+                        className="h-9 sm:h-10 text-xs sm:text-sm"
                       />
                     </div>
                     <div>
@@ -890,7 +890,7 @@ const MyTreatments = () => {
                         onChange={(e) =>
                           setTreatmentForm({ ...treatmentForm, end_date: e.target.value })
                         }
-                        className="h-8 sm:h-10 text-xs sm:text-sm"
+                        className="h-9 sm:h-10 text-xs sm:text-sm"
                       />
                     </div>
                   </div>
@@ -905,7 +905,7 @@ const MyTreatments = () => {
                         })
                       }
                     >
-                      <SelectTrigger id="status" className="h-8 sm:h-10 text-xs sm:text-sm">
+                      <SelectTrigger id="status" className="h-9 sm:h-10 text-xs sm:text-sm">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -914,7 +914,7 @@ const MyTreatments = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <Button onClick={handleAddTreatment} className="w-full h-8 sm:h-10 text-xs sm:text-sm mt-2">
+                  <Button onClick={handleAddTreatment} className="w-full h-9 sm:h-10 text-xs sm:text-sm mt-3 sm:mt-4">
                     Add Treatment
                   </Button>
                 </div>
