@@ -682,9 +682,6 @@ const MyTreatments = () => {
         <div className="p-6 border-b border-border/50 flex items-center justify-between">
           {sidebarOpen && (
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Pill className="w-5 h-5 text-primary-foreground" />
-              </div>
               <span className="font-bold text-lg">MediFlow</span>
             </Link>
           )}
@@ -1535,104 +1532,8 @@ const MyTreatments = () => {
                     <Stethoscope className="w-16 h-16 text-muted-foreground mb-4 opacity-50" />
                     <h3 className="text-lg font-semibold mb-2">No treatments yet</h3>
                     <p className="text-muted-foreground mb-6">
-                      Start by adding your first treatment plan
+                      Start by adding your first treatment plan using the "Add New Treatment" card on the right
                     </p>
-                    <Dialog open={addTreatmentOpen} onOpenChange={setAddTreatmentOpen}>
-                      <DialogTrigger asChild>
-                        <Button>
-                          <Plus className="w-4 h-4 mr-2" />
-                          Add Treatment
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="w-[calc(100%-1rem)] max-w-sm sm:max-w-md max-h-[90vh] overflow-y-auto">
-                        <DialogHeader>
-                          <DialogTitle className="text-lg sm:text-xl">Add New Treatment</DialogTitle>
-                          <DialogDescription className="text-xs sm:text-sm">
-                            Create a new treatment plan with details
-                          </DialogDescription>
-                        </DialogHeader>
-                        <div className="space-y-3 sm:space-y-4">
-                          <div>
-                            <Label htmlFor="name">Treatment Name *</Label>
-                            <Input
-                              id="name"
-                              placeholder="e.g., Diabetes Management"
-                              value={treatmentForm.name}
-                              onChange={(e) =>
-                                setTreatmentForm({ ...treatmentForm, name: e.target.value })
-                              }
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="description">Description</Label>
-                            <Textarea
-                              id="description"
-                              placeholder="Treatment details and purpose"
-                              value={treatmentForm.description}
-                              onChange={(e) =>
-                                setTreatmentForm({
-                                  ...treatmentForm,
-                                  description: e.target.value,
-                                })
-                              }
-                            />
-                          </div>
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <Label htmlFor="start_date">Start Date</Label>
-                              <Input
-                                id="start_date"
-                                type="date"
-                                value={treatmentForm.start_date}
-                                onChange={(e) =>
-                                  setTreatmentForm({
-                                    ...treatmentForm,
-                                    start_date: e.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                            <div>
-                              <Label htmlFor="end_date">End Date (Optional)</Label>
-                              <Input
-                                id="end_date"
-                                type="date"
-                                value={treatmentForm.end_date}
-                                onChange={(e) =>
-                                  setTreatmentForm({
-                                    ...treatmentForm,
-                                    end_date: e.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                          </div>
-                          <div>
-                            <Label htmlFor="status">Status</Label>
-                            <Select
-                              value={treatmentForm.status}
-                              onValueChange={(value: string) =>
-                                setTreatmentForm({
-                                  ...treatmentForm,
-                                  status: value === "active" ? "active" : "inactive",
-                                })
-                              }
-                            >
-                              <SelectTrigger id="status">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="active">Active</SelectItem>
-                                <SelectItem value="inactive">Inactive</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <Button onClick={handleAddTreatment} className="w-full">
-                            Add Treatment
-                          </Button>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
                   </CardContent>
                 </Card>
               )}
